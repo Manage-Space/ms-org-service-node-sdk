@@ -11,10 +11,10 @@
  */
 
 import { RequestFile } from './models';
-import { OrgSettingResponse } from './orgSettingResponse';
+import { SettingResponse } from './settingResponse';
 
 export class GetOrgSettings200Response {
-    'data'?: Array<OrgSettingResponse>;
+    'data'?: Array<SettingResponse>;
     'success'?: boolean;
     'error'?: object;
 
@@ -24,7 +24,7 @@ export class GetOrgSettings200Response {
         {
             "name": "data",
             "baseName": "data",
-            "type": "Array<OrgSettingResponse>"
+            "type": "Array<SettingResponse>"
         },
         {
             "name": "success",

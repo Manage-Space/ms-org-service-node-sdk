@@ -8,7 +8,6 @@ export * from './condition';
 export * from './conditionResponse';
 export * from './createOrgGlobalAdmin200Response';
 export * from './createOrgRequest';
-export * from './createOrgSettingRequest';
 export * from './createOrgSiteAmenity200Response';
 export * from './createOrgSiteAmenityRequest';
 export * from './createPricingGroupRequest';
@@ -28,14 +27,12 @@ export * from './getMapFeatures200Response';
 export * from './getOrgFeatures200Response';
 export * from './getOrgSettings200Response';
 export * from './getPricingGroupsBySite200Response';
-export * from './getSettingsBySite200Response';
 export * from './getSites200Response';
 export * from './getTaxRateBySite200Response';
 export * from './internalServerError500Response';
 export * from './internalServerError500ResponseError';
 export * from './mapFeatureResponseDto';
 export * from './orgResponse';
-export * from './orgSettingResponse';
 export * from './orgSiteAmenityResponse';
 export * from './position';
 export * from './pricingGroupResponse';
@@ -52,7 +49,6 @@ export * from './unauthorizedError401ResponseError';
 export * from './unitFeature';
 export * from './unitFeatureResponse';
 export * from './unitResponse';
-export * from './updateOrgSettingRequest';
 export * from './updateOrgSiteAmenityRequest';
 export * from './updateOrgUnitFeatureRequest';
 export * from './updatePricingGroupRequest';
@@ -82,7 +78,6 @@ import { Condition } from './condition';
 import { ConditionResponse } from './conditionResponse';
 import { CreateOrgGlobalAdmin200Response } from './createOrgGlobalAdmin200Response';
 import { CreateOrgRequest } from './createOrgRequest';
-import { CreateOrgSettingRequest } from './createOrgSettingRequest';
 import { CreateOrgSiteAmenity200Response } from './createOrgSiteAmenity200Response';
 import { CreateOrgSiteAmenityRequest } from './createOrgSiteAmenityRequest';
 import { CreatePricingGroupRequest } from './createPricingGroupRequest';
@@ -102,14 +97,12 @@ import { GetMapFeatures200Response } from './getMapFeatures200Response';
 import { GetOrgFeatures200Response } from './getOrgFeatures200Response';
 import { GetOrgSettings200Response } from './getOrgSettings200Response';
 import { GetPricingGroupsBySite200Response } from './getPricingGroupsBySite200Response';
-import { GetSettingsBySite200Response } from './getSettingsBySite200Response';
 import { GetSites200Response } from './getSites200Response';
 import { GetTaxRateBySite200Response } from './getTaxRateBySite200Response';
 import { InternalServerError500Response } from './internalServerError500Response';
 import { InternalServerError500ResponseError } from './internalServerError500ResponseError';
 import { MapFeatureResponseDto } from './mapFeatureResponseDto';
 import { OrgResponse } from './orgResponse';
-import { OrgSettingResponse } from './orgSettingResponse';
 import { OrgSiteAmenityResponse } from './orgSiteAmenityResponse';
 import { Position } from './position';
 import { PricingGroupResponse } from './pricingGroupResponse';
@@ -126,7 +119,6 @@ import { UnauthorizedError401ResponseError } from './unauthorizedError401Respons
 import { UnitFeature } from './unitFeature';
 import { UnitFeatureResponse } from './unitFeatureResponse';
 import { UnitResponse } from './unitResponse';
-import { UpdateOrgSettingRequest } from './updateOrgSettingRequest';
 import { UpdateOrgSiteAmenityRequest } from './updateOrgSiteAmenityRequest';
 import { UpdateOrgUnitFeatureRequest } from './updateOrgUnitFeatureRequest';
 import { UpdatePricingGroupRequest } from './updatePricingGroupRequest';
@@ -162,7 +154,6 @@ let typeMap: {[index: string]: any} = {
     "ConditionResponse": ConditionResponse,
     "CreateOrgGlobalAdmin200Response": CreateOrgGlobalAdmin200Response,
     "CreateOrgRequest": CreateOrgRequest,
-    "CreateOrgSettingRequest": CreateOrgSettingRequest,
     "CreateOrgSiteAmenity200Response": CreateOrgSiteAmenity200Response,
     "CreateOrgSiteAmenityRequest": CreateOrgSiteAmenityRequest,
     "CreatePricingGroupRequest": CreatePricingGroupRequest,
@@ -181,14 +172,12 @@ let typeMap: {[index: string]: any} = {
     "GetOrgFeatures200Response": GetOrgFeatures200Response,
     "GetOrgSettings200Response": GetOrgSettings200Response,
     "GetPricingGroupsBySite200Response": GetPricingGroupsBySite200Response,
-    "GetSettingsBySite200Response": GetSettingsBySite200Response,
     "GetSites200Response": GetSites200Response,
     "GetTaxRateBySite200Response": GetTaxRateBySite200Response,
     "InternalServerError500Response": InternalServerError500Response,
     "InternalServerError500ResponseError": InternalServerError500ResponseError,
     "MapFeatureResponseDto": MapFeatureResponseDto,
     "OrgResponse": OrgResponse,
-    "OrgSettingResponse": OrgSettingResponse,
     "OrgSiteAmenityResponse": OrgSiteAmenityResponse,
     "Position": Position,
     "PricingGroupResponse": PricingGroupResponse,
@@ -205,7 +194,6 @@ let typeMap: {[index: string]: any} = {
     "UnitFeature": UnitFeature,
     "UnitFeatureResponse": UnitFeatureResponse,
     "UnitResponse": UnitResponse,
-    "UpdateOrgSettingRequest": UpdateOrgSettingRequest,
     "UpdateOrgSiteAmenityRequest": UpdateOrgSiteAmenityRequest,
     "UpdateOrgUnitFeatureRequest": UpdateOrgUnitFeatureRequest,
     "UpdatePricingGroupRequest": UpdatePricingGroupRequest,

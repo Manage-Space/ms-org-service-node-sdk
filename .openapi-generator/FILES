@@ -11,7 +11,6 @@ model/condition.ts
 model/conditionResponse.ts
 model/createOrgGlobalAdmin200Response.ts
 model/createOrgRequest.ts
-model/createOrgSettingRequest.ts
 model/createOrgSiteAmenity200Response.ts
 model/createOrgSiteAmenityRequest.ts
 model/createPricingGroupRequest.ts
@@ -31,7 +30,6 @@ model/getMapFeatures200Response.ts
 model/getOrgFeatures200Response.ts
 model/getOrgSettings200Response.ts
 model/getPricingGroupsBySite200Response.ts
-model/getSettingsBySite200Response.ts
 model/getSites200Response.ts
 model/getTaxRateBySite200Response.ts
 model/internalServerError500Response.ts
@@ -39,7 +37,6 @@ model/internalServerError500ResponseError.ts
 model/mapFeatureResponseDto.ts
 model/models.ts
 model/orgResponse.ts
-model/orgSettingResponse.ts
 model/orgSiteAmenityResponse.ts
 model/position.ts
 model/pricingGroupResponse.ts
@@ -56,7 +53,6 @@ model/unauthorizedError401ResponseError.ts
 model/unitFeature.ts
 model/unitFeatureResponse.ts
 model/unitResponse.ts
-model/updateOrgSettingRequest.ts
 model/updateOrgSiteAmenityRequest.ts
 model/updateOrgUnitFeatureRequest.ts
 model/updatePricingGroupRequest.ts

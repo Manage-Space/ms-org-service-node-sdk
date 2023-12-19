@@ -18,7 +18,6 @@ import http from 'http';
 import { BadRequestError400Response } from '../model/badRequestError400Response';
 import { CreateOrgGlobalAdmin200Response } from '../model/createOrgGlobalAdmin200Response';
 import { CreateOrgRequest } from '../model/createOrgRequest';
-import { CreateOrgSettingRequest } from '../model/createOrgSettingRequest';
 import { CreateOrgSiteAmenity200Response } from '../model/createOrgSiteAmenity200Response';
 import { CreateOrgSiteAmenityRequest } from '../model/createOrgSiteAmenityRequest';
 import { CreatePricingGroupRequest } from '../model/createPricingGroupRequest';
@@ -35,12 +34,10 @@ import { GetMapFeatures200Response } from '../model/getMapFeatures200Response';
 import { GetOrgFeatures200Response } from '../model/getOrgFeatures200Response';
 import { GetOrgSettings200Response } from '../model/getOrgSettings200Response';
 import { GetPricingGroupsBySite200Response } from '../model/getPricingGroupsBySite200Response';
-import { GetSettingsBySite200Response } from '../model/getSettingsBySite200Response';
 import { GetSites200Response } from '../model/getSites200Response';
 import { GetTaxRateBySite200Response } from '../model/getTaxRateBySite200Response';
 import { InternalServerError500Response } from '../model/internalServerError500Response';
 import { UnauthorizedError401Response } from '../model/unauthorizedError401Response';
-import { UpdateOrgSettingRequest } from '../model/updateOrgSettingRequest';
 import { UpdateOrgSiteAmenityRequest } from '../model/updateOrgSiteAmenityRequest';
 import { UpdateOrgUnitFeatureRequest } from '../model/updateOrgUnitFeatureRequest';
 import { UpdatePricingGroupRequest } from '../model/updatePricingGroupRequest';
@@ -281,7 +278,7 @@ export class DefaultApi {
      * @param orgId Organization ID
      * @param createSettingRequest 
      */
-    public async createOrgSetting (orgId: string, createSettingRequest: CreateSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }> {
+    public async createOrgSetting (orgId: string, createSettingRequest: CreateSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }> {
         const localVarPath = this.basePath + '/org/orgs/{orgId}/settings'
             .replace('{' + 'orgId' + '}', encodeURIComponent(String(orgId)));
         let localVarQueryParameters: any = {};
@@ -317,85 +314,6 @@ export class DefaultApi {
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createSettingRequest, "CreateSettingRequest")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "GetSettingsBySite200Response");
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * Creates organization settings
-     * @summary Create org settings.
-     * @param orgId Organization ID you\&#39;re updating.
-     * @param createOrgSettingRequest 
-     */
-    public async createOrgSettings (orgId: string, createOrgSettingRequest: CreateOrgSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }> {
-        const localVarPath = this.basePath + '/org/orgs/{orgId}/org-settings'
-            .replace('{' + 'orgId' + '}', encodeURIComponent(String(orgId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json;v=1'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'orgId' is not null or undefined
-        if (orgId === null || orgId === undefined) {
-            throw new Error('Required parameter orgId was null or undefined when calling createOrgSettings.');
-        }
-
-        // verify required parameter 'createOrgSettingRequest' is not null or undefined
-        if (createOrgSettingRequest === null || createOrgSettingRequest === undefined) {
-            throw new Error('Required parameter createOrgSettingRequest was null or undefined when calling createOrgSettings.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(createOrgSettingRequest, "CreateOrgSettingRequest")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -763,7 +681,7 @@ export class DefaultApi {
      * @param siteId Site ID.
      * @param createSettingRequest 
      */
-    public async createSiteSetting (orgId: string, siteId: string, createSettingRequest: CreateSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }> {
+    public async createSiteSetting (orgId: string, siteId: string, createSettingRequest: CreateSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }> {
         const localVarPath = this.basePath + '/org/orgs/{orgId}/sites/{siteId}/settings'
             .replace('{' + 'orgId' + '}', encodeURIComponent(String(orgId)))
             .replace('{' + 'siteId' + '}', encodeURIComponent(String(siteId)));
@@ -826,13 +744,13 @@ export class DefaultApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "GetSettingsBySite200Response");
+                            body = ObjectSerializer.deserialize(body, "GetOrgSettings200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -1496,12 +1414,12 @@ export class DefaultApi {
         });
     }
     /**
-     * Retrieves an organization\'s settings.
-     * @summary Find an org\'s settings.
-     * @param orgId Organization ID you\&#39;re updating.
+     * Retrieve org level setting.
+     * @summary Retrieve org settings.
+     * @param orgId Organization ID
      */
     public async getOrgSettings (orgId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }> {
-        const localVarPath = this.basePath + '/org/orgs/{orgId}/org-settings'
+        const localVarPath = this.basePath + '/org/orgs/{orgId}/settings'
             .replace('{' + 'orgId' + '}', encodeURIComponent(String(orgId)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1903,7 +1821,7 @@ export class DefaultApi {
      * @param orgId Organization ID
      * @param siteId Site ID.
      */
-    public async getSettingsBySite (orgId: string, siteId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }> {
+    public async getSettingsBySite (orgId: string, siteId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }> {
         const localVarPath = this.basePath + '/org/orgs/{orgId}/sites/{siteId}/settings'
             .replace('{' + 'orgId' + '}', encodeURIComponent(String(orgId)))
             .replace('{' + 'siteId' + '}', encodeURIComponent(String(siteId)));
@@ -1960,13 +1878,13 @@ export class DefaultApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "GetSettingsBySite200Response");
+                            body = ObjectSerializer.deserialize(body, "GetOrgSettings200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -2642,7 +2560,7 @@ export class DefaultApi {
      * @param settingId Setting ID
      * @param updateSettingRequest 
      */
-    public async updateOrgSetting (orgId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }> {
+    public async updateOrgSetting (orgId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }> {
         const localVarPath = this.basePath + '/org/orgs/{orgId}/settings/{settingId}'
             .replace('{' + 'orgId' + '}', encodeURIComponent(String(orgId)))
             .replace('{' + 'settingId' + '}', encodeURIComponent(String(settingId)));
@@ -2684,85 +2602,6 @@ export class DefaultApi {
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(updateSettingRequest, "UpdateSettingRequest")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.bearer.accessToken) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.bearer.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "GetSettingsBySite200Response");
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * Updates an organization settings.
-     * @summary Update org settings.
-     * @param orgId Organization ID you\&#39;re updating.
-     * @param updateOrgSettingRequest 
-     */
-    public async updateOrgSettings (orgId: string, updateOrgSettingRequest: UpdateOrgSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }> {
-        const localVarPath = this.basePath + '/org/orgs/{orgId}/org-settings'
-            .replace('{' + 'orgId' + '}', encodeURIComponent(String(orgId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json;v=1'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'orgId' is not null or undefined
-        if (orgId === null || orgId === undefined) {
-            throw new Error('Required parameter orgId was null or undefined when calling updateOrgSettings.');
-        }
-
-        // verify required parameter 'updateOrgSettingRequest' is not null or undefined
-        if (updateOrgSettingRequest === null || updateOrgSettingRequest === undefined) {
-            throw new Error('Required parameter updateOrgSettingRequest was null or undefined when calling updateOrgSettings.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'PUT',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(updateOrgSettingRequest, "UpdateOrgSettingRequest")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -3159,7 +2998,7 @@ export class DefaultApi {
      * @param settingId Setting ID
      * @param updateSettingRequest 
      */
-    public async updateSiteSetting (orgId: string, siteId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }> {
+    public async updateSiteSetting (orgId: string, siteId: string, settingId: string, updateSettingRequest: UpdateSettingRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }> {
         const localVarPath = this.basePath + '/org/orgs/{orgId}/sites/{siteId}/settings/{settingId}'
             .replace('{' + 'orgId' + '}', encodeURIComponent(String(orgId)))
             .replace('{' + 'siteId' + '}', encodeURIComponent(String(siteId)))
@@ -3228,13 +3067,13 @@ export class DefaultApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetSettingsBySite200Response;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: GetOrgSettings200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "GetSettingsBySite200Response");
+                            body = ObjectSerializer.deserialize(body, "GetOrgSettings200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
