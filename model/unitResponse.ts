@@ -125,6 +125,10 @@ export class UnitResponse {
     * Payment ststus
     */
     'paymentStatus': UnitResponse.PaymentStatusEnum;
+    /**
+    * Reservation ID
+    */
+    'reservationId': object;
 
     static discriminator: string | undefined = undefined;
 
@@ -268,6 +272,11 @@ export class UnitResponse {
             "name": "paymentStatus",
             "baseName": "paymentStatus",
             "type": "UnitResponse.PaymentStatusEnum"
+        },
+        {
+            "name": "reservationId",
+            "baseName": "reservationId",
+            "type": "object"
         }    ];
 
     static getAttributeTypeMap() {
