@@ -129,6 +129,10 @@ export class UnitResponse {
     * Reservation ID
     */
     'reservationId': object;
+    /**
+    * Rental ID
+    */
+    'rentalId': object;
 
     static discriminator: string | undefined = undefined;
 
@@ -276,6 +280,11 @@ export class UnitResponse {
         {
             "name": "reservationId",
             "baseName": "reservationId",
+            "type": "object"
+        },
+        {
+            "name": "rentalId",
+            "baseName": "rentalId",
             "type": "object"
         }    ];
 
