@@ -128,11 +128,11 @@ export class UnitResponse {
     /**
     * Reservation ID
     */
-    'reservationId': object | null;
+    'reservationId': string | null;
     /**
     * Rental ID
     */
-    'rentalId': object | null;
+    'rentalId': string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -280,12 +280,12 @@ export class UnitResponse {
         {
             "name": "reservationId",
             "baseName": "reservationId",
-            "type": "object"
+            "type": "string"
         },
         {
             "name": "rentalId",
             "baseName": "rentalId",
-            "type": "object"
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
