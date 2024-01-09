@@ -128,11 +128,11 @@ export class UnitResponse {
     /**
     * Reservation ID
     */
-    'reservationId': object;
+    'reservationId': object | null;
     /**
     * Rental ID
     */
-    'rentalId': object;
+    'rentalId': object | null;
 
     static discriminator: string | undefined = undefined;
 
