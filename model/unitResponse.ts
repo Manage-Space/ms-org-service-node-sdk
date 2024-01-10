@@ -295,8 +295,11 @@ export class UnitResponse {
 
 export namespace UnitResponse {
     export enum PaymentStatusEnum {
+        Due = <any> 'due',
         Paid = <any> 'paid',
+        Pending = <any> 'pending',
         Unpaid = <any> 'unpaid',
+        Draft = <any> 'draft',
         Overdue = <any> 'overdue'
     }
 }
