@@ -45,6 +45,10 @@ export class SettingResponse {
     'description': string;
     'dataType': DataTypes;
     'value': SettingResponseValue;
+    /**
+    * The value of the setting in string format.
+    */
+    'valueEncoded': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -93,6 +97,11 @@ export class SettingResponse {
             "name": "value",
             "baseName": "value",
             "type": "SettingResponseValue"
+        },
+        {
+            "name": "valueEncoded",
+            "baseName": "valueEncoded",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
