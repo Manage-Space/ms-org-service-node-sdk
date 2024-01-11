@@ -122,7 +122,7 @@ export class UnitResponse {
     */
     'paidThrough': Date | null;
     /**
-    * Payment ststus
+    * Payment status
     */
     'paymentStatus': UnitResponse.PaymentStatusEnum;
     /**
